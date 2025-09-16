@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsiaCup.🔴LIVE.Stream</title>
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjr4GUPAZTXRhJlUZzIKl-y6aBrnpiAH8Mhw&s" type="image/png">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #70e1f5, #ffd194, #f5a9b8);
+        background-size: 400% 400%;
+        animation: waveAnimation 30s ease-in-out infinite;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+      }
+      @keyframes waveAnimation {
+        0% { background-position: 0% 0%; }
+        50% { background-position: 100% 100%; }
+        100% { background-position: 0% 0%; }
+      }
+      .title-image {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 5px solid #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .button-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .play-button {
+        font-size: 1.2rem;
+        padding: 15px 25px;
+        border: 2px solid transparent;
+        background-color: #dc3545;
+        color: white;
+        border-radius: 12px;
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .play-button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #dc3545;
+        border-radius: 12px;
+        transform: translate(-50%, -50%) scale(1);
+        transition: transform 0.3s ease;
+        z-index: 0;
+      }
+      .play-button:hover::before {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      .play-button:hover {
+        background-color: #c82333;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .play-button span {
+        position: relative;
+        z-index: 1;
+      }
+      .video-container {
+        width: 360px;
+        height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+      }
+      .video-js {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+      .watermark-container {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 100px;
+        height: auto;
+        opacity: 0.5;
+      }
+      .watermark {
+        width: 100%;
+        height: auto;
+      }
+      .new-watermark-container {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 100px;
+        height: auto;
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      .new-watermark-container img {
+        width: 100%;
+        height: auto;
+      }
+      .bottom-title-image {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin-top: 20px;
+        border: 5px solid #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .audio-container {
+        display: none;
+        position: absolute;
+        bottom: 60px;
+        left: 50px;
+        width: 0px; /* Adjust width as needed */
+        height: 0px; /* Adjust height as needed */
+        background: rgba(255, 255, 255, 0.9); /* 90% transparency */
+        border: 5px solid #23fa02;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      .audio-container audio {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        display: block; /* Ensure the audio element is displayed */
+        opacity: 0; /* Hide the controls */
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://yt3.googleusercontent.com/FBDYMLdUJOXjFxM95-Cp7oe-_MwOJAL8W1p_3_9AHuE3Dp822gqDHhf1QlPjzR-P9yJMBF8_bA=w1138-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="ASIA CUP" class="title-image">
+    <div class="button-container">
+      <button class="play-button" id="playButton"><span>Play Live Stream</span></button>
+    </div>
+    <div class="video-container" id="videoContainer">
+      <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" autoplay>
+        <source src="https://d1kyt65q9mhz2w.cloudfront.net/cd5697ea4f494162b6dd3eec55fa99f0/index.m3u8" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <a href="https://www.youtube.com/@AsianCricketCouncilTV/videos" target="_blank" class="watermark-container">
+      <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Asia_Cup_Logo.png" alt="Watermark" class="watermark">
+    </a>
+    <a href="#" class="new-watermark-container" id="newWatermark">
+      <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Asia_Cup_Logo.png" alt="New Watermark">
+    </a>
+    <img src="https://yt3.googleusercontent.com/FBDYMLdUJOXjFxM95-Cp7oe-_MwOJAL8W1p_3_9AHuE3Dp822gqDHhf1QlPjzR-P9yJMBF8_bA=w1138-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="2025" class="bottom-title-image">
+    <div class="audio-container" id="audioContainer">
+      <audio id="audioPlayer">
+        <source src="https://" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+    <script>
+      document.getElementById('playButton').addEventListener('click', function() {
+        document.querySelector('.button-container').style.display = 'none';
+        document.getElementById('videoContainer').style.display = 'flex';
+        var player = videojs('videoPlayer');
+        player.ready(function() {
+          player.play();
+        });
+      });
+
+      document.getElementById('newWatermark').addEventListener('click', function() {
+        var audioContainer = document.getElementById('audioContainer');
+        var audioPlayer = document.getElementById('audioPlayer');
+        if (audioContainer.style.display === 'none' || audioContainer.style.display === '') {
+          audioContainer.style.display = 'block';
+          audioPlayer.play();
+        } else {
+          audioPlayer.pause();
+          audioContainer.style.display = 'none';
+        }
+      });
+
+      // Disable right-click
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
